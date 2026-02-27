@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicrosoftInventorySim — AI Intelligence</title>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Marked for Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Sidebar Fluent -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="ms-logo">
+                    <div class="ms-square red"></div>
+                    <div class="ms-square green"></div>
+                    <div class="ms-square blue"></div>
+                    <div class="ms-square yellow"></div>
+                </div>
+                <span class="brand-name">InventorySim</span>
+            </div>
+
+            <div class="sidebar-section">
+                <span class="section-label">Consultas Globales</span>
+                <button class="quick-btn" onclick="quickQuery('Dame un resumen completo de todo el inventario')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Resumen General
+                </button>
+                <button class="quick-btn" onclick="quickQuery('¿Cuánto es la inversión total en el inventario?')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    Inversión Total
+                </button>
+            </div>
+
+            <div class="sidebar-section">
+                <span class="section-label">Filtros Inteligentes</span>
+                <button class="quick-btn" onclick="quickQuery('¿Qué equipos están activos actualmente?')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    </svg>
+                    Equipos Activos
+                </button>
+                <button class="quick-btn"
+                    onclick="quickQuery('¿Qué equipos están fuera de servicio o en mantenimiento?')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Fuera de Servicio
+                </button>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="agent-badge">
+                    <div class="badge-dot"></div>
+                    <span>System Active · Microsoft AI</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main">
+            <div class="chat-wrap" id="chatWrap">
+                <div class="welcome" id="welcome">
+                    <div class="welcome-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h1>MicrosoftInventorySim</h1>
+                    <p>Simulador de Inteligencia Artificial para el control absoluto de activos. Pregunta sobre equipos,
+                        costos o personal en lenguaje natural.</p>
+
+                    <div class="welcome-examples">
+                        <div class="example-chip" onclick="quickQuery('¿Qué equipo tiene Juan Perez?')">¿Qué equipo
+                            tiene Juan Perez?</div>
+                        <div class="example-chip" onclick="quickQuery('¿Cuántos equipos Samsung hay?')">¿Cuántos equipos
+                            Samsung hay?</div>
+                        <div class="example-chip" onclick="quickQuery('¿Cuánto hay invertido en total?')">¿Cuánto hay
+                            invertido en total?</div>
+                        <div class="example-chip" onclick="quickQuery('Muéstrame los equipos de IT')">Muéstrame los
+                            equipos de IT</div>
+                    </div>
+                </div>
+
+                <div class="messages" id="messages">
+                    <!-- Los mensajes aparecerán aquí -->
+                </div>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="input-zone">
+                <div class="input-bar">
+                    <textarea id="userInput" placeholder="Ej: ¿Qué equipos tiene el departamento de IT?" rows="1"
+                        onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>
